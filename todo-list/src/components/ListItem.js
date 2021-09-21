@@ -2,40 +2,29 @@ import React from 'react'
 
 const ListItem = (props) => {
 
-    function deleteTask(e) {
-        e.preventDefault();
-        let id = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        fetch(`http://localhost:5000/task/${id}`, {
-            method:"DELETE",
-        }).then( () => {
-            console.log("task deleted");
-        })
+    const handleDeleteClick = (e) => {
+        props.deleteTask(props.task);
     }
 
-    function editTask(){
-        
+    const handleEditClick = (e) => {
+        let value = {'edition':true, 'taskID':props.task.id, 'visibility':'visible'}
+        props.openModal(value)
     }
 
-    const formatTask = () => {
-        return <tr key={props.task.id}>
+    return (
+        <tr key={props.task.id}>
             <td>{props.task.id}</td>
             <td>{props.task.name}</td>
             <td>{` ${props.task.completed}`}</td>
             <td>
-                <button onClick={deleteTask}>
+                <button onClick={handleDeleteClick}>
                     X
                 </button>
-                <button onClick={editTask}>
+                <button onClick={handleEditClick}>
                     Edit
                 </button>
             </td>
         </tr>
-    }
-
-    return (
-        <tbody>
-            {formatTask()}
-        </tbody>
     )
 }
 
