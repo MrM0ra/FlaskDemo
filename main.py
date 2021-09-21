@@ -33,7 +33,7 @@ def addTask():
 	a = {}
 	a['name'] = taskName
 	a['completed'] = taskComp
-	a['id'] = n
+	a['id'] = str(n)
 	n+=1
 	tasks.append(a)
 	return jsonify({taskName:'added'})
@@ -55,12 +55,22 @@ def getTask():
 	return jsonify(tasks)
 
 @app.route('/task/<id>', methods=['GET'])
-def getTaskByName(id):
+def getTaskById(id):
 	for i in tasks:
 		if (i['id'] == id):
 			flag=True
+			return jsonify(i)	
+	return jsonify({id:'not found'})
+
+@app.route('/task/<id>', methods=['PUT'])
+def editTask(id):
+	taskName=request.json['taskName']
+	taskComp=request.json['completed']
+	for i in tasks:
+		if (i['id'] == id):
+			i['name'] = taskName
+			i['completed'] = taskComp
 			return jsonify(i)
-	
 	return jsonify({id:'not found'})
 
 #Run server

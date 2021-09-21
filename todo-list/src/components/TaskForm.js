@@ -14,6 +14,8 @@ const TaskForm = () => {
         }).then( () => {
             console.log("New task added")
         })
+        document.querySelector('#taskName').value=''
+        document.querySelector('#completed').value=''
     }
 
     return (
