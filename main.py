@@ -1,8 +1,9 @@
 from flask import Flask, request, redirect, url_for, render_template, jsonify
+from flask_cors import CORS
 
 #Init app
 app = Flask(__name__)
-
+CORS(app)
 #App's secret key
 app.secret_key = "thisissupposedtobesecret"
 n=7
