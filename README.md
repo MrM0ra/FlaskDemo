@@ -1,5 +1,5 @@
 # FlaskDemo
-Flask app demo for the course advanced web programming
+Flask app demo for the course advanced web programming developed with python and flask as backend API end react as frontend
 
 ## Adding tasks
 Go to: /task
