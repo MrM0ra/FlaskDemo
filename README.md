@@ -4,13 +4,13 @@ Flask app demo for the course advanced web programming
 ## Adding tasks
 Go to: /task
 Method:'POST'
-body/JSON:'name -> string,completed -> boolean'
+body/JSON:'taskName -> string,completed -> boolean'
 
 Example:
 localhost:5000/task
 POST
 {
-  'name':'take a shower',
+  'taskName':'take a shower',
   'completed':false
 }
 
